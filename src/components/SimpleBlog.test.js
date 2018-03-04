@@ -15,7 +15,7 @@ describe.only('<SimpleBlog />', () => {
   let blogComponent
 
   beforeEach(() => {
-      blogComponent = shallow(<SimpleBlog blog={blog} onCLick={mockHandler} />)
+      blogComponent = shallow(<SimpleBlog blog={blog} onClick={mockHandler} />)
   })
 
   it('renders title, author and likes', () => {
@@ -28,12 +28,8 @@ describe.only('<SimpleBlog />', () => {
 
   it('when like button is pressed twice, button handler is called twice', () => {
     const button = blogComponent.find('button')
-    //console.log(mockHandler)
-
     button.simulate('click')
     button.simulate('click')
-    console.log(button)
-    console.log(mockHandler.mock.calls.length)
     expect(mockHandler.mock.calls.length).toBe(2)
   })
 })
